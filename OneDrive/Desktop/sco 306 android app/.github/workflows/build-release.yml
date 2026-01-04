@@ -29,6 +29,16 @@ jobs:
       run: ./gradlew assembleRelease
       working-directory: ./FinanceApp
       
+    - name: Run UI Tests and Screenshots
+      run: ./gradlew connectedAndroidTest
+      working-directory: ./FinanceApp
+      
+    - name: Upload Screenshots
+      uses: actions/upload-artifact@v4
+      with:
+        name: ui-screenshots
+        path: FinanceApp/app/build/reports/androidTests/connected/
+      
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
